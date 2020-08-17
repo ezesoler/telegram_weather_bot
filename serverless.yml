@@ -1,0 +1,22 @@
+service: bot-clima
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+
+functions:
+  getWeather:
+    handler: handler.getWeather
+    description: "Retorna temperatura de una región"
+    events:
+      - http:
+          path: weather
+          method: POST
+
+plugins:
+  - serverless-offline
+
+
